@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BCE4541D-A8E0-4CE5-8F3B-29A92230E1B2}</ProjectGuid>
+    <ProjectGuid>{CB801A15-D83D-4BD9-893D-6444F8D397CB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MailAdress</RootNamespace>
-    <AssemblyName>MailAdress</AssemblyName>
+    <RootNamespace>Mail_Adress_Validation</RootNamespace>
+    <AssemblyName>Mail_Adress_Validation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
