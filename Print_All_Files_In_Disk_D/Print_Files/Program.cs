@@ -11,9 +11,14 @@ namespace Print_Files
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("These are local disks of your PC");
             string[] drives = Directory.GetLogicalDrives();
-            Console.Write("Select Root :");
-            string root = Console.ReadLine();
+            foreach (string drive in drives)
+            {
+                Console.WriteLine("   - " + drive);
+            }
+            Console.Write("Select Root : ");
+            string root = Console.ReadLine().ToUpper();
             root += ":\\";
             if (drives.Contains(root))
             {
@@ -21,7 +26,7 @@ namespace Print_Files
             }
             else
             {
-                Console.WriteLine("Please try again with a capital letter.");
+                Console.WriteLine("Please try again.");
             }
             Console.ReadKey();
         }
@@ -30,14 +35,27 @@ namespace Print_Files
         {
             string[] allFiles = Directory.GetFiles(directoryName);
             string[] allDirs = Directory.GetDirectories(directoryName);
-            
-            foreach (string file in allFiles)  
+            try
             {
-                Console.WriteLine(file);
+                foreach (string file in allFiles)
+                {
+                    Console.WriteLine(file);
+                }
             }
-            foreach (string dir in allDirs)
+            catch (Exception e)
             {
-                PrintAllFiles(dir); 
+                Console.WriteLine(e.Message);
+            }
+            try
+            {
+                foreach (string dir in allDirs)
+                {
+                    PrintAllFiles(dir);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }
