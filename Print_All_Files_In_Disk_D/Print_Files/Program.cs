@@ -11,19 +11,17 @@ namespace Print_Files
     {
         static void Main(string[] args)
         {
+            string[] drives = Directory.GetLogicalDrives();
             Console.Write("Select Root :");
-            string root = Console.ReadLine(); 
-            switch (root)
+            string root = Console.ReadLine();
+            root += ":\\";
+            if (drives.Contains(root))
             {
-                case "D":
-                    PrintAllFiles(@"D:\");
-                    break;
-                case "C":
-                    PrintAllFiles(@"C:\");
-                    break;
-                default:
-                    Console.WriteLine("Please select D or C");
-                    break;
+                PrintAllFiles(root);
+            }
+            else
+            {
+                Console.WriteLine("Please try again with a capital letter.");
             }
             Console.ReadKey();
         }
