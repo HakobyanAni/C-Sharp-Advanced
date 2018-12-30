@@ -42,17 +42,16 @@ namespace Arithmetic_Operations_With_Lambda_Operator
             if (oper != ArithOp.Undefined)
             {
                 res = ArithmeticOp.ArithmeticOperation(num1, num2, oper);
-            }
 
-            if (!(bool)res[0])
-            {
-                Console.WriteLine("Try again !");
+                if (!(bool)res[0])
+                {
+                    Console.WriteLine("Try again !");
+                }
+                else
+                {
+                    Console.WriteLine($"{num1} {arithOperation} {num2} is {res[1]}");
+                }
             }
-            else
-            {
-                Console.WriteLine($"{num1} {arithOperation} {num2} is {res[1]}");
-            }
-
             Console.ReadKey();
         }
     }

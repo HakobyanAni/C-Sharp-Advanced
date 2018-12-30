@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED0BC1A7-3EE6-4008-BF26-6CE39A0DF84D}</ProjectGuid>
+    <ProjectGuid>{93F84E2A-2C49-4D48-B045-99405FF8C63F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Arithmetic_operations_with_lambda_operator</RootNamespace>
     <AssemblyName>Arithmetic_operations_with_lambda_operator</AssemblyName>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArithmeticOp.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Program.cs" />
