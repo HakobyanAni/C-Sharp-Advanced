@@ -38,7 +38,7 @@ namespace Arithmetic_Operations_With_Lambda_Operator
                         else
                         {
                             isEverythingOk = false;
-                            return 0;
+                            return default(double);
                         }
                     };
                     break;
