@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Arithmetic_Operations_With_Lambda_Operator
 {
-    public delegate double Arithmetic(double VariableOne, double VariableTwo);
-
     class Program
     {
         static void Main(string[] args)
@@ -18,44 +16,41 @@ namespace Arithmetic_Operations_With_Lambda_Operator
             double num2 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Please select the arithmetic operation you want: + , - , * or /");
             string arithOperation = Console.ReadLine();
-
-            Arithmetic operation = null;
-
+            ArithOp oper;
             switch (arithOperation)
             {
                 case "+":
-                    operation = (x, y) => { return x + y; };
+                    oper = ArithOp.Add;
                     break;
                 case "-":
-                    operation = (x, y) => { return x - y; };
+                    oper = ArithOp.Sub;
                     break;
                 case "*":
-                    operation = (x, y) => { return x * y; };
+                    oper = ArithOp.Mul;
                     break;
                 case "/":
-                    operation = (x, y) =>
-                    {
-                        if (y != 0)
-                        {
-                            return x / y;
-                        }
-                        else
-                        {
-                            Console.WriteLine("You cann't divide number on 0");
-                            return 0;
-                        }
-                    };
+                    oper = ArithOp.Div;
                     break;
                 default:
-                    Console.WriteLine("Wrong operation!");
+                    oper = ArithOp.Undefined;
+                    Console.WriteLine("Wrong operation ! Try again.");
                     break;
             }
 
-            Console.WriteLine("-------------------------------");
+            ArrayList res = new ArrayList();
 
-            if (operation != null)
+            if (oper != ArithOp.Undefined)
             {
-                Console.WriteLine($"{num1} {arithOperation} {num2} is {operation(num1, num2)}");
+                res = ArithmeticOp.ArithmeticOperation(num1, num2, oper);
+            }
+
+            if (!(bool)res[0])
+            {
+                Console.WriteLine("Try again !");
+            }
+            else
+            {
+                Console.WriteLine($"{num1} {arithOperation} {num2} is {res[1]}");
             }
 
             Console.ReadKey();
