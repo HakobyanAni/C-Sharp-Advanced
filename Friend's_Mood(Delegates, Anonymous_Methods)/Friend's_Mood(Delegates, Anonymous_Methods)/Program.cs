@@ -31,7 +31,6 @@ namespace Friends_Mood
                         break;
                     case Moods.Excellent:
                         friend.SayHello = delegate { Console.WriteLine("Hello my dear. I miss you."); };
-
                         break;
                     default:
                         break;
