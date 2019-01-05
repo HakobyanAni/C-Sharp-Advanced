@@ -66,7 +66,5 @@ namespace MyCollection
         {
             return this as IEnumerator;
         }
-
-        public void Dispose() { }
     }
 }
