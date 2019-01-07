@@ -18,7 +18,6 @@ namespace Watches
             if (Type == WatchType.Electronic && (int)description > 4 || Type == WatchType.Mechanical && (int)description < 4)
             {
                 Description = Descriptions.BalanceWheel;
-
             }
             else
             {
