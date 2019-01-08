@@ -31,7 +31,7 @@ namespace LINQ
                 new Person{FirstName = "Elena", LastName = "Forbes", ID = 4444},
             };
 
-            var nationalitylist = new List<Nationality> //  Creating nationalitylist adding anonymous nationalities 
+            var nationalitylist = new List<Nationality> //  Creating nationalityList adding anonymous nationalities 
             {
                 new Nationality{ID = 1111, Country = "Switzerland"},
                 new Nationality{ID = 2222, Country = "United Kingdom"},
@@ -39,7 +39,7 @@ namespace LINQ
             };
 
             var query = from person in peopleList  // Creating diapason from the list peopleList
-                        join nation in nationalitylist  // List nationalitylist joins with the list peopleList  
+                        join nation in nationalitylist  // List nationalityList joins with the list peopleList  
                         on person.ID equals nation.ID // Equation of ID fields (for both lists)
                         orderby nation.Country // Sorting
                         select new
