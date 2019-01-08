@@ -41,7 +41,7 @@ namespace LINQ
             var query = from person in peopleList  // Creating diapason from the list peopleList
                         join nation in nationalitylist  // List nationalityList joins with the list peopleList  
                         on person.ID equals nation.ID // Equation of ID fields (for both lists)
-                        orderby nation.Country // Sorting
+                        orderby nation.Country // Sorting, by default ascending
                         select new
                         {
                             ID = person.ID,
