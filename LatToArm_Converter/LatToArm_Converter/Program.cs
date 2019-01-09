@@ -16,7 +16,9 @@ namespace CSharpProf1
             Console.Write("Input latin text in armenian :");
             string latinText = Console.ReadLine();
             string armText = latinText.LatToArm();
+
             Console.WriteLine($"converted: {armText}");
+
             Console.ReadKey();
         }
     }
