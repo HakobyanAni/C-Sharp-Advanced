@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solar_System_About_Reflection", "Solar_System_About_Reflection\Solar_System_About_Reflection.csproj", "{201889B2-2B05-4982-988A-9F9C88738188}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{89CFD6A6-39DB-4604-A8EC-5EE344B85CA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{201889B2-2B05-4982-988A-9F9C88738188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{201889B2-2B05-4982-988A-9F9C88738188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{201889B2-2B05-4982-988A-9F9C88738188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CFD6A6-39DB-4604-A8EC-5EE344B85CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CFD6A6-39DB-4604-A8EC-5EE344B85CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CFD6A6-39DB-4604-A8EC-5EE344B85CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CFD6A6-39DB-4604-A8EC-5EE344B85CA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
