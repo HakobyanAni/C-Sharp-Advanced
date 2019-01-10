@@ -33,6 +33,7 @@ namespace ClassLibrary
         {
 
         }
+
         private void RotatePlanet(Planets planetName)
         {
             Console.WriteLine($"{planetName} rotates around the sun.");

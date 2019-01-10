@@ -54,7 +54,6 @@ namespace Reflection
             }
         }
 
-
         static void Main(string[] args)
         {
             SolarSystem solarSystem = new SolarSystem();  // Creating an instance of the class SolarSystem
