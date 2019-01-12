@@ -11,36 +11,35 @@ namespace Attribute
     {
         static void Main(string[] args)
         {
-            try
+            MinistryOfCulture minCulture = new MinistryOfCulture()
             {
-                MinistryOfCulture minCulture = new MinistryOfCulture()
-                {
-                    Name = "Ministry of Culture",
-                    Adress = "Yerevan, Vazgen Sargsyan 3",
-                    PhoneNumber = "011523939",
-                    Email = "mincult.am",
-                    MuseumsCount = 5000,
-                    StaffCount = 600,
-                    Departments = new List<Department>()
+                Name = "Ministry of Culture",
+                Adress = "Yerevan, Vazgen Sargsyan 3",
+                PhoneNumber = "011523939",
+                Email = "mincult.am",
+                MuseumsCount = 5000,
+                StaffCount = 600,
+                Departments = new List<Department>()
                 {
                     new Department("HR", 5),
                     new Department("Orders", 4)
                 }
-                };
+            };
 
-                MinistryOfFinance minFinance = new MinistryOfFinance(21, "Ministry of Finance", "Yerevan, Melik Adamyan 1", "minfin.am", "011800156", 1800);
-                minFinance.Departments.Add(new Department("HR", 15));
-                minFinance.Departments.Add(new Department("Business", 11));
-                minFinance.Departments.Add(new Department("Statistic", 10));
+            MinistryOfFinance minFinance = new MinistryOfFinance(21, "Ministry of Finance", "Yerevan, Melik Adamyan 1", "minfin.am", "011800156", 1800);
+            minFinance.Departments.Add(new Department("HR", 15));
+            minFinance.Departments.Add(new Department("Business", 11));
+            minFinance.Departments.Add(new Department("Statistic", 10));
 
-                // OR
-                //minFinance.Departments = new List<Department> 
-                //    {
-                //        new Department("Business", 15),
-                //        new Department("Statistics", 10)
-                //    };
+            // OR
+            //minFinance.Departments = new List<Department> 
+            //    {
+            //        new Department("Business", 15),
+            //        new Department("Statistics", 10)
+            //    };
 
-
+            try
+            {
                 // Serializing objects and writing them in file
                 string minCultureToJSON = JsonConvert.SerializeObject(minCulture, Formatting.Indented);
                 File.WriteAllText(@"C:\Users\ganih\source\repos\Homework_Advanced_C_Sharp\Attribute\minCultureToJSON.txt", minCultureToJSON);
