@@ -59,7 +59,6 @@ namespace Attribute
                 MinistryOfFinance deserializedFromFileF = JsonConvert.DeserializeObject<MinistryOfFinance>(objectFinStringFromFile);
 
                 Console.WriteLine(deserializedFromFileM.MuseumsCount);
-
                 Console.WriteLine(deserializedFromFileF.BanksCount);
             }
 
