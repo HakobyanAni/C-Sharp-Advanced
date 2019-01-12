@@ -20,8 +20,8 @@ namespace Object_Clone
 
             Console.WriteLine("");
 
-            house.Number = 10;    // ref type
-            Console.WriteLine($"house.Number = {house.Number = 10}    // ref type");
+            house.Number = 10;    // value type
+            Console.WriteLine($"house.Number = {house.Number = 10}    // value type");
             house.TheStreet.Name = "Halabyan";   // ref type
             Console.WriteLine($"house.TheStreet.Name = {house.TheStreet.Name = "Halabyan"}    // ref type");
             str.Name = "Nalbandyan";    // ref type
