@@ -6,6 +6,24 @@ namespace Task_Parallel_Library
 {
     class Program
     {
+        static void MethodForToken(object arg)
+        {
+            CancellationToken token = (CancellationToken)arg;
+            token.ThrowIfCancellationRequested();
+
+            for (int i = 0; i < 50; i++)
+            {
+                if (token.IsCancellationRequested)
+                {
+                    Console.WriteLine("token ");
+                    token.ThrowIfCancellationRequested();
+
+                }
+                Thread.Sleep(1000);
+            }
+            Console.WriteLine("Task is canceled.");
+        }
+
         static void MethodForAsync(object obj)
         {
             Console.WriteLine($"Method: MethodForAsync.");
@@ -50,12 +68,12 @@ namespace Task_Parallel_Library
             Console.WriteLine($"Thread's number is {threadsNumber}. Task's ID is null.");
 
             Task task3 = new Task(MethodForWait);
-            task3.Start(); // task3 never starts because the main thread never waits for this thread to be finished (isBackground = true)
+            task3.Start(); // task3 ends when the main thread ends (isBackground = true)
 
 
             Action action = new Action(MethodForTask);
 
-            Task task = new Task(action); //
+            Task task = new Task(action);
             Console.WriteLine($"a) N{Thread.CurrentThread.ManagedThreadId} task is {task.Status}");
 
             task.Start(); // task starts asynchronously
@@ -75,6 +93,7 @@ namespace Task_Parallel_Library
 
             Console.WriteLine($"d) N{Thread.CurrentThread.ManagedThreadId} task is {task.Status}");
 
+
             // Creating another task by using TaskFactory class, lambda expression
             Task task5 = Task.Factory.StartNew(new Action(() =>
             {
@@ -85,14 +104,38 @@ namespace Task_Parallel_Library
                 }
             }));
 
-
             Action<object> actionObj = MethodForAsync;
             Task task4 = new Task(actionObj, "+");
             task4.Start(); // Runing task4
 
+            Thread.Sleep(2000);
+
+
+            // Task cancellation by CancellationToken
+            CancellationTokenSource cancellation = new CancellationTokenSource();
+            CancellationToken token = cancellation.Token;
+
+            Task task123 = new Task(MethodForToken, token);
+            task123.Start();
+
             Thread.Sleep(1000);
 
-            Task.WaitAll(task3, task4, task5); // main task thread waits for task3, task4 and task5 threads to be finished
+            try
+            {
+                cancellation.Cancel();
+                task123.Wait();
+            }
+            catch (AggregateException e)
+            {
+                if (task123.IsCanceled)
+                {
+                    Console.WriteLine("Change");
+                }
+                Console.WriteLine(e.InnerException.Message);
+            }
+
+
+            Task.WaitAll(task4, task5); // main task thread waits for task3, task4 and task5 threads to be finished
 
             Console.WriteLine("Main task is finished.");
         }
