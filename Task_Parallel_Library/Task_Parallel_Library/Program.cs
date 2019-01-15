@@ -75,7 +75,6 @@ namespace Task_Parallel_Library
 
             Console.WriteLine($"d) N{Thread.CurrentThread.ManagedThreadId} task is {task.Status}");
 
-
             // Creating another task by using TaskFactory class, lambda expression
             Task task5 = Task.Factory.StartNew(new Action(() =>
             {
