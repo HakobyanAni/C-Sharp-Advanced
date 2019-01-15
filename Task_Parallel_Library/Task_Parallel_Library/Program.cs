@@ -21,7 +21,7 @@ namespace Task_Parallel_Library
                 }
                 Thread.Sleep(1000);
             }
-            Console.WriteLine("Task is canceled.");
+            Console.WriteLine("Task is cancelled.");
         }
 
         static void MethodForAsync(object obj)
