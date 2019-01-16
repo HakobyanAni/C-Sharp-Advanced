@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
@@ -53,7 +50,6 @@ namespace JSON__Threads
             Console.ReadKey();
 
             string taskResult = task.Result;
-
             Console.WriteLine(taskResult);
 
             Console.ReadKey();
