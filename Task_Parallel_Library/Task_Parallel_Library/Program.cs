@@ -57,7 +57,7 @@ namespace Task_Parallel_Library
                 Console.Write("1 ");
             }
 
-            Console.WriteLine(" ");
+            Console.WriteLine();
             Console.WriteLine($"N{threadsNumber} thread is finished");
         }
 
@@ -86,9 +86,10 @@ namespace Task_Parallel_Library
             {
                 Console.Write("0 ");
             }
+
+            Console.WriteLine();
             Console.WriteLine($"c) N{Thread.CurrentThread.ManagedThreadId} task is {task.Status}");
 
-            Console.WriteLine(" ");
             Console.WriteLine($"N{threadsNumber} thread is finished");  // main thread finished
 
             Console.WriteLine($"d) N{Thread.CurrentThread.ManagedThreadId} task is {task.Status}");
