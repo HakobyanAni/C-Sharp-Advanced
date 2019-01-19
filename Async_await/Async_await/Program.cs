@@ -83,14 +83,17 @@ namespace GitHubFollowers
                     }
                 }
             }
+
             catch (NullReferenceException e)
             {
                 Console.WriteLine(e.Message);
             }
+
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
             }
+
             Console.ReadKey();
         }
     }
