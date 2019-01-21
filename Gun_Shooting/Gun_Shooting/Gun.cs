@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Gun_Shooting
 {
@@ -37,25 +34,31 @@ namespace Gun_Shooting
 
         public bool ToShoot(int countOfShoots)
         {
-            if (!IsMagazineEmpty)
+            for (int i = 0; i < countOfShoots; i++)
             {
-                for (int i = 0; i < countOfShoots; i++)
+                if (!IsMagazineEmpty)
                 {
-                    Console.ReadLine();
                     Magazine.Pop();
-                    ClearCurrentConsoleLine();
-                    Thread.Sleep(300);
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("----->");
-                    Thread.Sleep(300);
+                    DrowArrow();
+                    return true;
+                }
+                else
+                {
                     return false;
                 }
             }
-            else
-            {
-                return true;
-            }
             return false;
+        }
+        private void DrowArrow()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            for (int i = 0; i < Patrons.MaxDistance; i++)
+            {
+                Console.Write("-");
+                Thread.Sleep(20);
+            }
+            Console.Write(">");
         }
 
         private void ClearCurrentConsoleLine()
