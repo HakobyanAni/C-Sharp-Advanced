@@ -39,32 +39,18 @@ namespace IT_Companies_JSON_
 
         public static void Loading(Task<string> task)
         {
+            string loading = "Loading...";
+            Console.ForegroundColor = ConsoleColor.Blue;
             while (!task.IsCompleted)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("L");
-                Thread.Sleep(250);
-                Console.Write("o");
-                Thread.Sleep(250);
-                Console.Write("a");
-                Thread.Sleep(250);
-                Console.Write("d");
-                Thread.Sleep(250);
-                Console.Write("i");
-                Thread.Sleep(250);
-                Console.Write("n");
-                Thread.Sleep(250);
-                Console.Write("g");
-                Thread.Sleep(250);
-                Console.Write(".");
-                Thread.Sleep(250);
-                Console.Write(".");
-                Thread.Sleep(250);
-                Console.Write(".");
-                Thread.Sleep(250);
+                foreach (var symbol in loading)
+                {
+                    Console.WriteLine(symbol.ToString());
+                    Thread.Sleep(250);
+                }
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Gray;
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         static void Main(string[] args)
