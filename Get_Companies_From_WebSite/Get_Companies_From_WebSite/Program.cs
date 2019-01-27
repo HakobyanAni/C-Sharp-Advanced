@@ -41,11 +41,7 @@ namespace Get_Companies_From_WebSite
 
             string companyName = "//h1[@class=\"text-left\"]";
             HtmlNodeCollection htmlNodeOfName = htmlDoc.DocumentNode.SelectNodes(companyName);
-
-            foreach (var name in htmlNodeOfName)
-            {
-                company_1.Name = name.InnerText;
-            }
+            company_1.Name = htmlNodeOfName[0].InnerText;
 
             company_1.DescribeYourself();
 
