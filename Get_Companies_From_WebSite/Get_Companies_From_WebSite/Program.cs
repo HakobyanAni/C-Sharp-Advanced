@@ -43,9 +43,11 @@ namespace Get_Companies_From_WebSite
             HtmlNodeCollection htmlNodeOfName = htmlDoc.DocumentNode.SelectNodes(companyName);
             company_1.Name = htmlNodeOfName[0].InnerText;
 
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"This is main information about {company_1.Name}.");
+            Console.ForegroundColor = ConsoleColor.Gray;
             company_1.DescribeYourself();
-
-
 
             Console.ReadKey();
         }
