@@ -35,13 +35,13 @@ namespace JSON__Threads
             while (!task.IsCompleted)
             {
                 Console.Clear();
-                Thread.Sleep(750);
+                Thread.Sleep(700);
                 Console.Write(". ");
-                Thread.Sleep(750);
+                Thread.Sleep(700);
                 Console.Write(". ");
-                Thread.Sleep(750);
+                Thread.Sleep(700);
                 Console.Write(". ");
-                Thread.Sleep(750);
+                Thread.Sleep(700);
             }
 
             Console.Clear();
