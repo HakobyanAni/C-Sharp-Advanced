@@ -18,6 +18,11 @@ namespace Get_Companies_From_WebSite
         public string WebSite { get; set; }
         public string Adress { get; set; }
 
+        public Company()
+        {
+
+        }
+
         public Company(string industry, string type, string numbOfEmployees, string dataOfFoundation, string webSite, string adress)
         {
             Industry = industry;
@@ -30,13 +35,16 @@ namespace Get_Companies_From_WebSite
 
         public void DescribeYourself()
         {
-            Console.WriteLine(Name);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"This is main information about {Name}.");
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(Industry);
             Console.WriteLine(Type);
             Console.WriteLine(NumbOfEmployees);
             Console.WriteLine(DataOfFoundation);
             Console.WriteLine(WebSite);
             Console.WriteLine(Adress);
+            Jobs.DescribeYourself();
         }
     }
 }

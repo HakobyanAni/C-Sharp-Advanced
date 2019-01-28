@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="JobWebSite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structs.cs" />
+    <Compile Include="ActiveJobs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
