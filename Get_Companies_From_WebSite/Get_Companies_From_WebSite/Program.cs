@@ -36,6 +36,7 @@ namespace Get_Companies_From_WebSite
                 company.DescribeYourself();
             }
 
+            // Filter from the AllCompanyList
             var filterList = jobWebSite.AllCompanies.Where(x => x.NumbOfEmployees > 50 && x.Jobs.Any(y => y.JobName.ToLower().Contains("engineer"))).ToList();
             foreach (var company in filterList)
             {
