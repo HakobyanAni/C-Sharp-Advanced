@@ -1,66 +1,77 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Get_Companies_From_WebSite
 {
     public static class Helper
     {
-        public static string ToScroll(string url)
+        public static string ScrollToEndAndGetSource(string url)
         {
-
-            ChromeOptions co = new ChromeOptions();
-            co.AddArgument("--disable-images");
-
-            string directory = @"C:\Users\ganih\source\repos\Homework_Advanced_C_Sharp\Homework1_JSON\bin\Debug";
-            ChromeDriver chromeDriver = new ChromeDriver(directory, co);
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--disable-images");
+            string directory = @"C:\Users\Tigran PC\Desktop\Get_Companies_From_WebSite\Get_Companies_From_WebSite\bin\Debug";
+            ChromeDriver chromeDriver = new ChromeDriver(directory, chromeOptions);
             chromeDriver.Navigate().GoToUrl(url);
-            for (int i = 0; i < 15; i++)
-            {
-                try
-                {
-                    chromeDriver.ExecuteScript($"window.scrollBy(0,1750);");
 
-                }
-                catch (Exception e)
+            long scrollHeight = 0;
+
+            do
+            {
+                IJavaScriptExecutor js = chromeDriver;
+                long newScrollHeight = (long)js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight); return document.body.scrollHeight;");
+
+                if (newScrollHeight == scrollHeight)
                 {
+                    break;
                 }
-                Thread.Sleep(1500);
-            }
+                else
+                {
+                    scrollHeight = newScrollHeight;
+                    Thread.Sleep(2000);
+                }
+            } while (true);
+
             return chromeDriver.PageSource;
         }
 
-        public static void SearchActiveJob(string url)
+        public static List<ActiveJobs> SearchActiveJobForCompany(HtmlDocument doc)
         {
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(url);
-            string job = "//div[@class=\"job-inner job-item-title\"]";
+            string pathForNames = "//div[@class=\"job-inner job-item-title\"]";
+            string pathForData = "//div[@class='job-inner job-list-deadline']";
+            string pathForLoacation = "//div[@class='job-inner job-location']";
 
-            string job2 = "//div[@class='job-inner job-list-deadline']";
-            HtmlNodeCollection jobItemTitle = doc.DocumentNode.SelectNodes(job);
-            HtmlNodeCollection jobԼistDeadline = doc.DocumentNode.SelectNodes(job2);
-            List<ActiveJobs> activeJobs = new List<ActiveJobs>();
+            HtmlNodeCollection jobItemTitle = doc.DocumentNode.SelectNodes(pathForNames);
+            HtmlNodeCollection jobԼistDeadline = doc.DocumentNode.SelectNodes(pathForData);
+            HtmlNodeCollection jobLocation = doc.DocumentNode.SelectNodes(pathForLoacation);
+
+            List<ActiveJobs> allActiveJobs = new List<ActiveJobs>();
+
             for (int i = 0; i < jobItemTitle.Count; i++)
             {
-                string[] splitText = jobItemTitle[i].InnerText.Split('\n');
-                string[] splitText2 = jobԼistDeadline[i].InnerText.Split('\n');
-                string temp = splitText2[3] + splitText2[4] + splitText2[5];
-                activeJobs.Add(new ActiveJobs { JobName = splitText[1], CompanyName = splitText[2], Data = temp });
-            }
+                var location = jobLocation[i].InnerText.Replace(" ", "").Replace("\n", "");
+                var names = (jobItemTitle[i].InnerText.Replace(" ", "").Split('\n')
+                .Select(item => item.Replace("\r", ""))).ToArray();
 
-            foreach (var item in activeJobs)
-            {
-                Console.WriteLine($"Company:{item.CompanyName},Data:{item.Data},Job:{item.JobName}");
+                var data = jobԼistDeadline[i].InnerText.Replace(" ", "").Split('\n')
+                            .Select(item => item.Replace("\r", ""))
+                            .Where(item => !string.IsNullOrEmpty(item)).ToArray();
+
+                allActiveJobs.Add(new ActiveJobs { JobName = names[1], CompanyName = names[2], Data = string.Join(" ", data), Location = location });
             }
-            Console.ReadLine();
+            return allActiveJobs;
         }
 
         public static List<Company> ScrapForStaffAM(string url)
         {
             HtmlWeb web = new HtmlWeb();
-            string content = ToScroll(url);
+            string content = ScrollToEndAndGetSource(url);
             var doc = new HtmlDocument();
             doc.LoadHtml(content);
 
@@ -93,6 +104,7 @@ namespace Get_Companies_From_WebSite
                     string companyProperties = "//p[@class=\"professional-skills-description\"]";
                     HtmlNodeCollection htmlNodes = htmlDoc.DocumentNode.SelectNodes(companyProperties); // All the property values in a collection 
                     Company company = new Company();
+                    company.Jobs = SearchActiveJobForCompany(htmlDoc);
 
                     foreach (var node in htmlNodes)
                     {
@@ -108,8 +120,10 @@ namespace Get_Companies_From_WebSite
                         }
                         else if (inner.ToLower().Contains("number of employees"))
                         {
-                            company.NumbOfEmployees = node.InnerText;
-
+                            if (int.TryParse(node.InnerText, out int x))
+                            {
+                                company.NumbOfEmployees = x;
+                            }
                         }
                         else if (inner.ToLower().Contains("data of foundation"))
                         {

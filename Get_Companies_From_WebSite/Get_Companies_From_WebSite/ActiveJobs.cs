@@ -11,20 +11,16 @@ namespace Get_Companies_From_WebSite
         public string JobName { get; set; }
         public string Data { get; set; }
         public string CompanyName { get; set; }
+        public string Location { get; set; }
 
         public ActiveJobs()
         {
 
         }
 
-        public void DescribeYourself()
+        public override string ToString()
         {
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Here is active jobs.");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(JobName);
-            Console.WriteLine(Data);
-            Console.WriteLine(CompanyName);
+            return $"{JobName} \n{Data} \n{Location}";
         }
     }
 }

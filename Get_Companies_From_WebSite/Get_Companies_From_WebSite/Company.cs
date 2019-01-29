@@ -11,10 +11,10 @@ namespace Get_Companies_From_WebSite
         public string Name { get; set; }
         public string Industry { get; set; }
         public string Type { get; set; }
-        public string NumbOfEmployees { get; set; }
+        public int NumbOfEmployees { get; set; }
         public string DataOfFoundation { get; set; }
         public string AboutCompany { get; set; }
-        public ActiveJobs Jobs { get; set; }
+        public List<ActiveJobs> Jobs { get; set; }
         public string WebSite { get; set; }
         public string Adress { get; set; }
 
@@ -23,7 +23,7 @@ namespace Get_Companies_From_WebSite
 
         }
 
-        public Company(string industry, string type, string numbOfEmployees, string dataOfFoundation, string webSite, string adress)
+        public Company(string industry, string type, int numbOfEmployees, string dataOfFoundation, string webSite, string adress)
         {
             Industry = industry;
             Type = type;
@@ -31,6 +31,7 @@ namespace Get_Companies_From_WebSite
             DataOfFoundation = dataOfFoundation;
             WebSite = webSite;
             Adress = adress;
+            Jobs = new List<ActiveJobs>();
         }
 
         public void DescribeYourself()
@@ -44,7 +45,12 @@ namespace Get_Companies_From_WebSite
             Console.WriteLine(DataOfFoundation);
             Console.WriteLine(WebSite);
             Console.WriteLine(Adress);
-            Jobs.DescribeYourself();
+            Console.WriteLine("Here is active jobs.");
+            foreach (var job in Jobs)
+            {
+                Console.WriteLine(job);
+                Console.WriteLine("---------------");
+            }
         }
     }
 }

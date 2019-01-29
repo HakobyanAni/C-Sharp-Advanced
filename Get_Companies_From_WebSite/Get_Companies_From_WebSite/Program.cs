@@ -16,7 +16,7 @@ namespace Get_Companies_From_WebSite
     {
         public static void WriteExceptionInFile(string e)
         {
-            FileStream fileStream = new FileStream(@"C:\Users\ganih\source\repos\Homework_Advanced_C_Sharp\Homework1_JSON\bin\Debug", FileMode.Append);
+            FileStream fileStream = new FileStream("Exception.txt", FileMode.Append);
             StreamWriter writer = new StreamWriter(fileStream);
             writer.Write(e + "\n");
             writer.Flush();
@@ -30,13 +30,17 @@ namespace Get_Companies_From_WebSite
             List<Company> comps = Helper.ScrapForStaffAM(jobWebSite.URL);
             jobWebSite.AllCompanies = comps;
             Console.Clear();
+
             foreach (var company in jobWebSite.AllCompanies)
             {
                 company.DescribeYourself();
             }
 
-
-
+            var filterList = jobWebSite.AllCompanies.Where(x => x.NumbOfEmployees > 50 && x.Jobs.Any(y => y.JobName.ToLower().Contains("engineer"))).ToList();
+            foreach (var company in filterList)
+            {
+                Console.WriteLine(company);
+            }
 
             Console.ReadKey();
         }
