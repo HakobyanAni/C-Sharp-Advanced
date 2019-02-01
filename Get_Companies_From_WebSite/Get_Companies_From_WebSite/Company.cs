@@ -37,6 +37,7 @@ namespace Get_Companies_From_WebSite
         public void DescribeYourself()
         {
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
             Console.WriteLine($"This is main information about {Name}.");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(Industry);
@@ -46,11 +47,11 @@ namespace Get_Companies_From_WebSite
             Console.WriteLine(WebSite);
             Console.WriteLine(Adress);
             Console.WriteLine("Here is active jobs.");
-            foreach (var job in Jobs)
-            {
-                Console.WriteLine(job);
-                Console.WriteLine("---------------");
-            }
+            //foreach (var job in Jobs)
+            //{
+            //    Console.WriteLine(job);
+            //    Console.WriteLine("---------------");
+            //}
         }
     }
 }
