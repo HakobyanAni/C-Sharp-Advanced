@@ -12,10 +12,12 @@ Here you can find tasks about basic concepts of OOP(Encapsluation, Inheritance, 
 * [Polymorphism](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/polymorphism) 
 
 ## [**Algorithms and Data Structures**](http://www.uomisan.edu.iq/library/admin/book/19226579694.pdf)
-### [Sorting and Searching Algorithms]
+### Sorting and Searching Algorithms
 * [BubbleSort, InsertionSort, SelectionSort](https://github.com/HakobyanAni/C-Sharp-Advanced/tree/master/BubbleSort%2CInsertionSort%2CSelectionSort)
 * [Binary Search](https://github.com/HakobyanAni/C-Sharp-Advanced/tree/master/Binary_search)
-* .Net Data Structures
+
+### .Net Data Structures
+ * List, Dictionary, Set
 
 
 
