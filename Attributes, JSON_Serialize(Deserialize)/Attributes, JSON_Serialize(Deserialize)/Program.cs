@@ -57,17 +57,14 @@ namespace Attribute
                 Console.WriteLine(deserializedFromFileM.MuseumsCount);
                 Console.WriteLine(deserializedFromFileF.BanksCount);
             }
-
             catch (DirectoryNotFoundException exc) // Object - Exception - SystemException - IOException - DirectoryNotFoundException
             {
                 Console.WriteLine($"Folder is not found. - {exc.Message}, Method - {new StackTrace(exc).GetFrame(0).GetMethod().Name}");
             }
-
             catch (FileNotFoundException ex) // Object - Exception - SystemException - IOException - FileNotFoundException
             {
                 Console.WriteLine($"File is not found. - {ex.Message}, Method - {new StackTrace(ex).GetFrame(0).GetMethod().Name}");
             }
-
             catch (Exception e)
             {
                 Console.WriteLine($"Attention ! There is a problem with   object. - {e.Message}, Method - {new StackTrace(e).GetFrame(0).GetMethod().Name}");
