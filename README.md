@@ -1,6 +1,6 @@
 
 # C# Advanced <img src="https://user-images.githubusercontent.com/45730967/52584834-942ed480-2e4c-11e9-8e2a-387dd091cde4.png" align="right" width="140px" height="120px" /> 
-Here you can find tasks about basic concepts of OOP(Encapsluation, Inheritance, Abstraction, Polymorphism), Structs, Delegates, Anonymous Method, Anonymous Type, Lambda Expression, Extension Method, Generics, Events, Collections, Threads, System.IO, LINQ, Exceptions, Operator overloading, Attributes, Reflection, GB Collector, Data structures, algorithms and etc.
+Here you can find tasks about basic concepts of OOP(Encapsluation, Inheritance, Abstraction, Polymorphism), Structs, Delegates, Anonymous Method, Anonymous Type, Lambda Expression, Extension Method, Generics, Events, Collections, Threads, System.IO, LINQ, Exceptions, Operator overloading, Attributes, Reflection, GB Collector, Data structures, Algorithms and etc.
 <br>
 
 ### [**Object Oriented Programming**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/object-oriented-programming)
