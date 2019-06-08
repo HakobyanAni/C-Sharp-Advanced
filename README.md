@@ -31,6 +31,6 @@ Here you can find tasks about basic concepts of OOP(Encapsluation, Inheritance, 
 <br>
 <br>
 
-> Projects written on C# 6.0, .NET Framework 4.7 Visual Studio 2017 Comunity Edition
+
 
 
